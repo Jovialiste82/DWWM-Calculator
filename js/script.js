@@ -17,19 +17,18 @@ let result = null;
 // -------------- Event Listeners --------------------
 numberKeys.forEach((key) => {
   key.addEventListener("click", (e) => {
-    if (selection === "0") {
-      selection = e.target.textContent;
-      value1 = Number(selection);
-    } else {
-      selection += e.target.textContent;
-      value1 = Number(selection);
-    }
+    selection =
+      selection === "0"
+        ? e.target.textContent
+        : selection + e.target.textContent;
+    value1 = Number(selection);
     displayOnScreen(selection);
   });
 });
 
-commaKey.addEventListener("click", (e) => {
-  if (!selection.includes(".")) selection += ".";
+commaKey.addEventListener("click", () => {
+  if (selection.includes(".")) return;
+  selection += ".";
   displayOnScreen(selection);
 });
 
@@ -47,11 +46,15 @@ operationKeys.forEach((key) => {
 });
 
 plusminusKey.addEventListener("click", () => {
-  if (selection !== "0") {
-    selection = String(Number(selection) * -1);
-    displayOnScreen(selection);
-    value1 = Number(selection);
-  }
+  // If it’s exactly "0", do nothing
+  if (selection === "0") return;
+
+  // Toggle "-"
+  selection = selection.startsWith("-") ? selection.slice(1) : "-" + selection;
+
+  // Display and value storage
+  displayOnScreen(selection);
+  value1 = Number(selection);
 });
 
 clearKey.addEventListener("click", () => {
@@ -95,10 +98,7 @@ function actionBackButton(situation) {
       displayOnScreen(selection);
       break;
     case "moreThanOneCharacter":
-      let array = Array.from(selection);
-      array.pop();
-      let newSelection = array.join("");
-      selection = newSelection;
+      selection = selection.slice(0, -1);
       displayOnScreen(selection);
       break;
     default:
