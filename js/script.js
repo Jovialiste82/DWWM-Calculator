@@ -9,24 +9,22 @@ const clearKey = document.querySelector("#clearKey");
 const backKey = document.querySelector("#backKey");
 const equalsKey = document.querySelector("#equalsKey");
 let selection = "0";
-let tempCalculation = null;
-let operation = null;
-
-let testString = "55.55";
-console.log(Number(testString));
+let value1 = 0;
+let value2 = null;
+let operation = null; // addition, substraction, multiplication, division
+let result = null;
 
 // -------------- Event Listeners --------------------
 numberKeys.forEach((key) => {
   key.addEventListener("click", (e) => {
     if (selection === "0") {
       selection = e.target.textContent;
+      value1 = Number(selection);
     } else {
       selection += e.target.textContent;
+      value1 = Number(selection);
     }
     displayOnScreen(selection);
-
-    // update selection string
-    // display on screen
   });
 });
 
@@ -39,22 +37,32 @@ commaKey.addEventListener("click", (e) => {
 operationKeys.forEach((key) => {
   key.addEventListener("click", (e) => {
     operation = e.target.dataset.operation;
-    console.log(operation);
-    // check if tempCalculation is null
-    // check if selection is null
-    // if selection null => set tempCalculation to 0 and store operator
-    // if selection not null + if tempcalculation null => store operator
-    // if selection not null + if tempcalculation not null => do calculation
+    console.log("click ok");
+    selection = "0";
+    displayOnScreen(selection);
+    if (value1 && value2) {
+      doCalculation(value1, value2, operation);
+      return;
+    }
+    value2 = value1;
   });
 });
 
 plusminusKey.addEventListener("click", () => {
-  selection = String(Number(selection) * -1);
-  displayOnScreen(selection);
+  if (selection !== "0") {
+    selection = String(Number(selection) * -1);
+    displayOnScreen(selection);
+    value1 = Number(selection);
+  }
 });
 
 clearKey.addEventListener("click", () => {
-  screenDisplay.textContent = "0";
+  selection = "0";
+  displayOnScreen(selection);
+  value1 = 0;
+  value2 = null;
+  operation = null;
+  result = null;
 });
 
 backKey.addEventListener("click", () => {
@@ -68,15 +76,13 @@ backKey.addEventListener("click", () => {
 });
 
 equalsKey.addEventListener("click", () => {
-  console.log(e.target.textContent);
-  console.log("will display final result");
+  doCalculation(value1, value2, operation);
+  operation = null;
 });
 
 // -------------- Functions --------------------
 
 function displayOnScreen(string) {
-  console.log(string);
-  console.log(screenDisplay);
   screenDisplay.textContent = string;
 }
 
@@ -109,4 +115,46 @@ function actionBackButton(situation) {
   }
 }
 
-function doCalculation(tempCalculation, selection, operation) {}
+function doCalculation(value1, value2, operation) {
+  console.log("value1 in doCalculation: ", value1);
+  console.log("value2 in doCalculation: ", value2);
+
+  switch (operation) {
+    case "addition":
+      //   result = value1 + value2;
+      selection = String(value1 + value2);
+      displayOnScreen(selection);
+      operation = null;
+
+      break;
+    case "substraction":
+      //   result = value2 - value1;
+      selection = String(value2 - value1);
+      displayOnScreen(selection);
+      operation = null;
+
+      break;
+    case "division":
+      if (value1 === 0) {
+        displayOnScreen("Error");
+        return;
+      }
+      //   result = value2 / value1;
+      selection = String(value2 / value1);
+      displayOnScreen(selection);
+      operation = null;
+
+      break;
+    case "multiplication":
+      //   result = value1 * value2;
+      selection = String(value1 * value2);
+      displayOnScreen(selection);
+      operation = null;
+
+      break;
+    default:
+      console.log(
+        "Error... could not identify operation. Please double-check!"
+      );
+  }
+}
