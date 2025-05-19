@@ -110,36 +110,32 @@ function actionBackButton(situation) {
 function doCalculation(value1, value2, operation) {
   switch (operation) {
     case "addition":
-      //   result = value1 + value2;
-      selection = String(value1 + value2);
+      result = value1 + value2;
+      selection = String(result.toFixed(2));
       displayOnScreen(selection);
       operation = null;
-
       break;
     case "substraction":
-      //   result = value2 - value1;
-      selection = String(value2 - value1);
+      result = value2 - value1;
+      selection = String(result.toFixed(2));
       displayOnScreen(selection);
       operation = null;
-
       break;
     case "division":
       if (value1 === 0) {
         displayOnScreen("Error");
         return;
       }
-      //   result = value2 / value1;
-      selection = String(value2 / value1);
+      result = value2 / value1;
+      selection = String(result.toFixed(2));
       displayOnScreen(selection);
       operation = null;
-
       break;
     case "multiplication":
-      //   result = value1 * value2;
-      selection = String(value1 * value2);
+      result = value1 * value2;
+      selection = String(result.toFixed(2));
       displayOnScreen(selection);
       operation = null;
-
       break;
     default:
       console.log(
