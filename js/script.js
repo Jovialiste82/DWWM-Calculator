@@ -50,12 +50,8 @@ operationKeys.forEach((key) => {
 });
 
 plusminusKey.addEventListener("click", () => {
-  console.log(e.target.textContent);
-  // check if tempCalculation is null
-  // check if selection is null
-  // if selection null => do nothing
-  // if selection not null + tempcalculation not null => convert to number , set to tempcalculation, multiply it by -1
-  //
+  selection = String(Number(selection) * -1);
+  displayOnScreen(selection);
 });
 
 clearKey.addEventListener("click", () => {
