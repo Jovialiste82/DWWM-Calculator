@@ -32,15 +32,14 @@ numberKeys.forEach((key) => {
 
 commaKey.addEventListener("click", (e) => {
   console.log(e.target.textContent);
-  // check if there is already a comma in selection
-  // if there is, do nothing
-  // if not, add "real comma" to selection
-  // display on screen
+  if (!selection.includes(".")) selection += ".";
+  displayOnScreen(selection);
 });
 
 operationKeys.forEach((key) => {
   key.addEventListener("click", (e) => {
-    console.log(e.target.dataset.operation);
+    operation = e.target.dataset.operation;
+    console.log(operation);
     // check if tempCalculation is null
     // check if selection is null
     // if selection null => set tempCalculation to 0 and store operator
@@ -111,8 +110,3 @@ function actionBackButton(situation) {
 }
 
 function doCalculation(tempCalculation, selection, operation) {}
-
-function negate(number) {
-  const newNumber = number * -1;
-  return newNumber;
-}
