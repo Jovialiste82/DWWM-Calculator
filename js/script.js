@@ -29,7 +29,6 @@ numberKeys.forEach((key) => {
 });
 
 commaKey.addEventListener("click", (e) => {
-  console.log(e.target.textContent);
   if (!selection.includes(".")) selection += ".";
   displayOnScreen(selection);
 });
@@ -37,7 +36,6 @@ commaKey.addEventListener("click", (e) => {
 operationKeys.forEach((key) => {
   key.addEventListener("click", (e) => {
     operation = e.target.dataset.operation;
-    console.log("click ok");
     selection = "0";
     displayOnScreen(selection);
     if (value1 && value2) {
@@ -91,23 +89,17 @@ function actionBackButton(situation) {
     case "oneCharacterWhichIsZero":
       console.log("Nothing to do");
       displayOnScreen(selection);
-
       break;
     case "oneCharacterWhichIsNotZero":
       selection = "0";
-      console.log(selection);
       displayOnScreen(selection);
-
       break;
     case "moreThanOneCharacter":
-      console.log(selection);
       let array = Array.from(selection);
       array.pop();
       let newSelection = array.join("");
       selection = newSelection;
-      console.log(selection);
       displayOnScreen(selection);
-
       break;
     default:
       console.log("Weird... No case triggered. Please double check!");
@@ -116,9 +108,6 @@ function actionBackButton(situation) {
 }
 
 function doCalculation(value1, value2, operation) {
-  console.log("value1 in doCalculation: ", value1);
-  console.log("value2 in doCalculation: ", value2);
-
   switch (operation) {
     case "addition":
       //   result = value1 + value2;
