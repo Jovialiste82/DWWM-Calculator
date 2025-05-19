@@ -1,107 +1,162 @@
+/* css/style.css */
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
-/* -------------------------------------------- */
-/* Booting Up */
-* {
-  margin: 0;
-  scroll-behavior: smooth;
-}
 
 :root {
   --black: #353935;
   --green: #98fb98;
   --lightgrey: rgb(172, 161, 161);
-  --opensans: "Open Sans";
-  --roboto: "Roboto";
-  --orbitron: "Orbitron";
+  --font-body: "Roboto", sans-serif;
+  --font-display: "Orbitron", sans-serif;
+  --gap: 0.5rem;
 }
-
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
-  /* https://grabient.com/HQdgLAzANMCsAcIYDZnygWgAzAIwE5YZcstiIAmTHWEdbYCya4SpPXIvfJBrMCkA/ */
   background: linear-gradient(
     180deg,
     rgba(152, 158, 203, 1) 0%,
-    rgba(140, 164, 198, 1) 16.667%,
-    rgba(146, 169, 190, 1) 33.333%,
-    rgba(167, 172, 180, 1) 50%,
-    rgba(196, 175, 168, 1) 66.667%,
-    rgba(223, 175, 157, 1) 83.333%,
     rgba(238, 174, 147, 1) 100%
   );
   min-height: 100vh;
-  font-family: var(--Roboto);
+  font-family: var(--font-body);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
-
 header,
 footer {
   text-align: center;
+  padding: 1rem;
 }
-
-header {
-  padding: 5vh;
+header h1 {
+  font-family: var(--font-display);
 }
-
 main {
-  flex-grow: 1;
+  width: 100%;
 }
-
 .calculator {
-  height: 70vh;
-  width: 50vw;
+  width: 80%;
+  max-width: 1000px;
+  background-color: rgba(35, 31, 31, 0.4);
   border: 1px solid var(--black);
-  border-radius: 8px;
+  border-radius: 0.5rem;
+  padding: var(--gap);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
   margin: auto;
-  background-color: rgb(35, 31, 31, 0.4);
 }
-
 .screen-display {
-  color: var(--black);
   background-color: var(--green);
-  text-align: end;
-  height: 10%;
-  margin: 24px;
-  padding: 24px;
-  border-radius: 16px;
-  font-size: 40px;
+  color: var(--black);
+  font-family: var(--font-display);
+  font-size: 2rem;
+  text-align: right;
+  border-radius: 0.5rem;
+  padding: var(--gap);
+  min-height: 3rem;
+  overflow-wrap: break-word;
 }
-
 .keypanel ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.keypanel ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 0;
-}
-
-.key {
   list-style: none;
-  border: 1px solid var(--black);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  grid-template-areas:
+    "seven eight nine division"
+    "four five six multiplication"
+    "one two three subtraction"
+    "pm zero comma addition"
+    "clear back equals equals";
+}
+.key {
   background-color: var(--lightgrey);
-  height: 50px;
+  border: 1px solid var(--black);
+  border-radius: 0.25rem;
+  padding: 0.75rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 40px;
-  font-weight: 600;
-  transition: background-color 0.3s;
+  opacity: 1;
+  transition: all 0.1s;
+  user-select: none;
 }
-
 .key:hover {
-  background-color: rgb(82, 22, 22, 0.1);
-  font-size: 42px;
+  transform: scale(1.02);
+  opacity: 0.8;
+}
+.key.seven {
+  grid-area: seven;
+}
+.key.eight {
+  grid-area: eight;
+}
+.key.nine {
+  grid-area: nine;
+}
+.key.division {
+  grid-area: division;
+}
+.key.four {
+  grid-area: four;
+}
+.key.five {
+  grid-area: five;
+}
+.key.six {
+  grid-area: six;
+}
+.key.multiplication {
+  grid-area: multiplication;
+}
+.key.one {
+  grid-area: one;
+}
+.key.two {
+  grid-area: two;
+}
+.key.three {
+  grid-area: three;
+}
+.key.subtraction {
+  grid-area: subtraction;
+}
+.key.pm {
+  grid-area: pm;
+}
+.key.zero {
+  grid-area: zero;
+}
+.key.comma {
+  grid-area: comma;
+}
+.key.addition {
+  grid-area: addition;
+}
+.key.clear {
+  grid-area: clear;
+}
+.key.back {
+  grid-area: back;
+}
+.key.equals {
+  grid-area: equals;
 }
 
-.keyA {
-  width: 22%;
-}
-
-.keyB {
-  width: 30%;
+@media (min-width: 768px) {
+  .screen-display {
+    font-size: 2.5rem;
+    min-height: 4rem;
+  }
+  .key {
+    font-size: 2rem;
+  }
 }

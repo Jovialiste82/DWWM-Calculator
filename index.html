@@ -3,50 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Calculatrice</title>
   </head>
   <body>
-    <header><h1>Calculatrice</h1></header>
+    <header>
+      <h1>Calculatrice</h1>
+    </header>
     <main>
-      <section>
-        <div class="calculator">
-          <div id="screen-display" class="screen-display">0</div>
-          <div class="keypanel">
-            <ul>
-              <li class="key keyA number">7</li>
-              <li class="key keyA number">8</li>
-              <li class="key keyA number">9</li>
-              <li class="key keyA operation" data-operation="division">
-                &#247;
-              </li>
-              <li class="key keyA number">4</li>
-              <li class="key keyA number">5</li>
-              <li class="key keyA number">6</li>
-              <li class="key keyA operation" data-operation="multiplication">
-                &#215;
-              </li>
-              <li class="key keyA number">1</li>
-              <li class="key keyA number">2</li>
-              <li class="key keyA number">3</li>
-              <li class="key keyA operation" data-operation="substraction">
-                &#8722;
-              </li>
-              <li id="plusminusKey" class="key keyA">&#177;</li>
-              <li class="key keyA number">0</li>
-              <li id="commaKey" class="key keyA">&#8901;</li>
-              <li class="key keyA operation" data-operation="addition">
-                &#43;
-              </li>
-              <li id="clearKey" class="key keyB clear">C</li>
-              <li id="backKey" class="key keyB back">&#8592;</li>
-              <li id="equalsKey" class="key keyB equals">&#61;</li>
-            </ul>
-          </div>
+      <div class="calculator">
+        <div id="screen-display" class="screen-display">0</div>
+        <div class="keypanel">
+          <ul>
+            <li class="key number seven">7</li>
+            <li class="key number eight">8</li>
+            <li class="key number nine">9</li>
+            <li class="key operation division" data-operation="division">
+              &#247;
+            </li>
+
+            <li class="key number four">4</li>
+            <li class="key number five">5</li>
+            <li class="key number six">6</li>
+            <li
+              class="key operation multiplication"
+              data-operation="multiplication"
+            >
+              &#215;
+            </li>
+
+            <li class="key number one">1</li>
+            <li class="key number two">2</li>
+            <li class="key number three">3</li>
+            <li class="key operation subtraction" data-operation="subtraction">
+              &#8722;
+            </li>
+
+            <li class="key pm" id="plusminusKey">&#177;</li>
+            <li class="key number zero">0</li>
+            <li class="key comma" id="commaKey">&#8901;</li>
+            <li class="key operation addition" data-operation="addition">
+              &#43;
+            </li>
+
+            <li class="key clear" id="clearKey">C</li>
+            <li class="key back" id="backKey">&#8592;</li>
+            <li class="key equals" id="equalsKey">&#61;</li>
+          </ul>
         </div>
-      </section>
+      </div>
     </main>
-    <footer><p>Made by Philippe Charpentier</p></footer>
+    <footer>
+      <p>Made by Philippe Charpentier</p>
+    </footer>
     <script type="module" src="js/script.js"></script>
   </body>
 </html>
