@@ -3,11 +3,42 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Calculatrice</title>
   </head>
   <body>
-    <header></header>
-    <main></main>
-    <footer></footer>
+    <header><h1>Calculatrice</h1></header>
+    <main>
+      <section>
+        <div class="calculator">
+          <div id="screen-display" class="screen-display">0</div>
+          <div class="keypanel">
+            <ul>
+              <li class="key keyA number">7</li>
+              <li class="key keyA number">8</li>
+              <li class="key keyA number">9</li>
+              <li class="key keyA operation">&#247;</li>
+              <li class="key keyA number">4</li>
+              <li class="key keyA number">5</li>
+              <li class="key keyA number">6</li>
+              <li class="key keyA operation">&#215;</li>
+              <li class="key keyA number">1</li>
+              <li class="key keyA number">2</li>
+              <li class="key keyA number">3</li>
+              <li class="key keyA operation">&#8722;</li>
+              <li id="plusminusKey" class="key keyA">&#177;</li>
+              <li class="key keyA number">0</li>
+              <li id="commaKey" class="key keyA">&#44;</li>
+              <li class="key keyA operation">&#43;</li>
+              <li id="clearKey" class="key keyB clear">C</li>
+              <li id="backKey" class="key keyB back">&#8592;</li>
+              <li id="equalsKey" class="key keyB equals">&#61;</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer><p>Made by Philippe Charpentier</p></footer>
+    <script type="module" src="js/script.js"></script>
   </body>
 </html>
