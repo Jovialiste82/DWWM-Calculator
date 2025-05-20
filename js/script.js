@@ -87,10 +87,10 @@ backKey.addEventListener("click", () => {
 equalsKey.addEventListener("click", () => {
   calculationData.push(Number(screenDisplayText));
   checkIntermediaryResult();
-  tempScreenDisplayText = "0";
-  screenDisplayText = String(calculationData[0].toFixed(2));
-  displayOnScreen(screenDisplay, screenDisplayText);
-  displayOnScreen(tempScreenDisplay, tempScreenDisplayText);
+  // tempScreenDisplayText = "0";
+  // screenDisplayText = String(calculationData[0].toFixed(2));
+  // displayOnScreen(screenDisplay, screenDisplayText);
+  // displayOnScreen(tempScreenDisplay, tempScreenDisplayText);
 });
 
 // -------------- Functions --------------------
@@ -183,9 +183,11 @@ function doCalculation(value1, operation, value2) {
       displayOnScreen(tempScreenDisplay, tempScreenDisplayText);
       break;
     case "division":
-      if (value1 === 0) {
-        displayOnScreen(screenDisplay, "Error");
-        displayOnScreen(tempScreenDisplay, "0");
+      if (value2 === 0) {
+        screenDisplayText = "Error";
+        tempScreenDisplayText = "0";
+        displayOnScreen(screenDisplay, screenDisplayText);
+        displayOnScreen(tempScreenDisplay, tempScreenDisplayText);
         return;
       }
       result = value1 / value2;
