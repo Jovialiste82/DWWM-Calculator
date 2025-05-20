@@ -12,11 +12,9 @@ const equalsKey = document.querySelector("#equalsKey");
 let screenDisplayText = "0";
 let tempScreenDisplayText = "0";
 let calculationData = [];
-let value1 = 0;
-let value2 = null;
 let operation = null; // addition, substraction, multiplication, division
-let result = null;
 
+// -------------- Objects constants --------------------
 const operations = {
   addition: "+",
   substraction: "-",
@@ -56,6 +54,9 @@ plusminusKey.addEventListener("click", () => {
   // If it’s exactly "0", do nothing
   if (screenDisplayText === "0") return;
 
+  // If we're not dealing with very first number, do nothing
+  if (calculationData.length > 0) return;
+
   // Toggle "-"
   screenDisplayText = screenDisplayText.startsWith("-")
     ? screenDisplayText.slice(1)
@@ -63,13 +64,9 @@ plusminusKey.addEventListener("click", () => {
 
   // Display and value storage
   displayOnScreen(screenDisplay, screenDisplayText);
-
-  value1 = Number(screenDisplayText);
 });
 
-clearKey.addEventListener("click", (e) => {
-  console.log("click: ", e.target.attributes[1]);
-
+clearKey.addEventListener("click", () => {
   screenDisplayText = "0";
   tempScreenDisplayText = "0";
   displayOnScreen(screenDisplay, screenDisplayText);
@@ -77,9 +74,7 @@ clearKey.addEventListener("click", (e) => {
   calculationData = [];
 });
 
-backKey.addEventListener("click", (e) => {
-  console.log("click: ", e.target.attributes[1]);
-
+backKey.addEventListener("click", () => {
   // Case 1 : "0"
   if (screenDisplayText === "0") actionBackButton("oneCharacterWhichIsZero");
   // Case 2 : "6"
@@ -89,8 +84,7 @@ backKey.addEventListener("click", (e) => {
   if (screenDisplayText.length > 1) actionBackButton("moreThanOneCharacter");
 });
 
-equalsKey.addEventListener("click", (e) => {
-  console.log("click: ", e.target.attributes[1]);
+equalsKey.addEventListener("click", () => {
   calculationData.push(Number(screenDisplayText));
   checkIntermediaryResult();
   tempScreenDisplayText = "0";
@@ -145,14 +139,12 @@ function checkIntermediaryResult() {
       displayOnScreen(tempScreenDisplay, tempScreenDisplayText);
       break;
     case 3:
-      // Case 4 : [555, "addition", 569]
+      // Case 4 : [555, "addition", 569] // with the use of the "equals" key
       doCalculation(calculationData[0], calculationData[1], calculationData[2]);
-
       break;
     case 4:
       // Case 4 : [555, "addition", 569, "addition"]
       doCalculation(calculationData[0], calculationData[1], calculationData[2]);
-
       break;
     default:
       console.log(
@@ -162,6 +154,8 @@ function checkIntermediaryResult() {
 }
 
 function doCalculation(value1, operation, value2) {
+  let result;
+
   switch (operation) {
     case "addition":
       result = value1 + value2;
