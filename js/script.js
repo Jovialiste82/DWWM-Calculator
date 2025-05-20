@@ -62,7 +62,7 @@ plusminusKey.addEventListener("click", () => {
     ? screenDisplayText.slice(1)
     : "-" + screenDisplayText;
 
-  // Display and value storage
+  // Display
   displayOnScreen(screenDisplay, screenDisplayText);
 });
 
@@ -87,10 +87,6 @@ backKey.addEventListener("click", () => {
 equalsKey.addEventListener("click", () => {
   calculationData.push(Number(screenDisplayText));
   checkIntermediaryResult();
-  // tempScreenDisplayText = "0";
-  // screenDisplayText = String(calculationData[0].toFixed(2));
-  // displayOnScreen(screenDisplay, screenDisplayText);
-  // displayOnScreen(tempScreenDisplay, tempScreenDisplayText);
 });
 
 // -------------- Functions --------------------
